@@ -17,6 +17,7 @@ interface ISearch {
   author: IAuthor[];
   categories: ICategories[];
 }
+
 const SearchBar: React.FC<ISearch> = ({
   dataSearch,
   setDataSearch,
@@ -56,6 +57,14 @@ const SearchBar: React.FC<ISearch> = ({
     dataSearch,
     setDataSearch,
   ]);
+  const sortOptions: {
+    label: string;
+    value: "az" | "newest" | "oldest";
+  }[] = [
+    { value: "az", label: "Title A-Z" },
+    { value: "newest", label: "Newest First" },
+    { value: "oldest", label: "Oldest First" },
+  ];
 
   return (
     <div className="">
@@ -129,18 +138,20 @@ const SearchBar: React.FC<ISearch> = ({
           </Select>
           {/* title */}
           <Select
+            defaultValue="az"
             onValueChange={(val) =>
               setSortTye(val as "newest" | "oldest" | "az")
             }
-            defaultValue="az"
           >
             <SelectTrigger className="lg:w-[180px] w-full">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="az">Title A-Z</SelectItem>
-              <SelectItem value="newest">Newest First</SelectItem>
-              <SelectItem value="oldest">Oldest First</SelectItem>
+              {sortOptions.map((opt) => (
+                <SelectItem key={opt.value} value={opt.value}>
+                  {opt.label}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
