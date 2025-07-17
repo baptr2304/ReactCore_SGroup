@@ -95,7 +95,7 @@ const SearchBar: React.FC<ISearch> = ({
                 <h1 className="text-2xl font-bold">Create New Blog Post</h1>
               </DialogTitle>
             </DialogHeader>
-            <PostForm />
+            <PostForm authorList={author} categoriesList={categories}/>
           </DialogContent>
         </Dialog>
       </div>

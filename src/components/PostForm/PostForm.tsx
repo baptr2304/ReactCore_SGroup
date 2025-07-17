@@ -24,12 +24,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { onlyAuthor, onlyCategories } from "@/const/mock/fakeData";
+import type { IAuthor, ICategories } from "@/const/type/postType";
 import type { PostFormValues } from "@/utils/validations/postSchema";
 import { ImagePlus } from "lucide-react";
 import { Textarea } from "../ui/textarea";
 
-const PostForm = () => {
+interface IPostForm {
+  authorList: IAuthor[];
+  categoriesList: ICategories[];
+}
+
+const PostForm: React.FC<IPostForm> = ({ authorList, categoriesList }) => {
   const form = useForm<PostFormValues>({
     resolver: zodResolver(postFormSchema),
     defaultValues: {
@@ -97,7 +102,7 @@ const PostForm = () => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {onlyAuthor.map((a) => (
+                        {authorList.map((a) => (
                           <SelectItem key={a.id} value={a.value}>
                             {a.name}
                           </SelectItem>
@@ -121,7 +126,7 @@ const PostForm = () => {
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
-                        {onlyCategories.map((c) => (
+                        {categoriesList.map((c) => (
                           <SelectItem key={c.name} value={c.name}>
                             {c.name}
                           </SelectItem>
