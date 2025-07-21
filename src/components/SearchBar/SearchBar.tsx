@@ -12,6 +12,7 @@ import { filterPosts, sortPosts } from "@/utils/postUtils";
 import { Plus, Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import PostForm from "../PostForm/PostForm";
+import PostFormRef from "../PostForm/PostFormRef";
 import {
   Dialog,
   DialogContent,
@@ -82,22 +83,40 @@ const SearchBar: React.FC<ISearch> = ({
             Discover insights, tutorials, and updates from our team
           </p>
         </div>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button className="bg-black text-white">
-              <Plus className="h-4 w-4" />
-              Add New Post
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="max-h-[90vh] overflow-y-auto w-full max-w-5xl">
-            <DialogHeader>
-              <DialogTitle>
-                <h1 className="text-2xl font-bold">Create New Blog Post</h1>
-              </DialogTitle>
-            </DialogHeader>
-            <PostForm authorList={author} categoriesList={categories}/>
-          </DialogContent>
-        </Dialog>
+        <div className="flex gap-0.5">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="bg-black text-white">
+                <Plus className="h-4 w-4" />
+                Add with Hook Form
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-h-[90vh] overflow-y-auto w-full max-w-5xl">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold">
+                  Create New Blog Post (Hook Form)
+                </DialogTitle>
+              </DialogHeader>
+              <PostForm authorList={author} categoriesList={categories} />
+            </DialogContent>
+          </Dialog>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="bg-gray-800 text-white">
+                <Plus className="h-4 w-4" />
+                Add with Ref Form
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-h-[90vh] overflow-y-auto w-full max-w-5xl">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-bold">
+                  Create New Blog Post (Ref Form)
+                </DialogTitle>
+              </DialogHeader>
+              <PostFormRef authorList={author} categoriesList={categories} />
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
       <div className="flex flex-col lg:flex-row gap-4 mb-8 p-4 bg-muted/50 rounded-lg">
         <div className="flex-1">
