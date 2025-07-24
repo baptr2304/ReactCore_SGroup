@@ -1,4 +1,11 @@
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -7,35 +14,28 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import type { IAuthor, ICategories, IPost } from "@/const/type/postType";
-import { filterPosts, sortPosts } from "@/utils/postUtils";
+import type { Author, Categories, Post } from "@/posts/shared/data/PostType";
 import { Plus, Search } from "lucide-react";
 import { useEffect, useState } from "react";
-import PostForm from "../PostForm/PostForm";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "../ui/dialog";
+import PostForm from "../PostList/PostForm";
+import { filterPosts, sortPosts } from "./PostFilter";
 interface ISearch {
-  dataSearch: IPost[];
-  setDataSearch: React.Dispatch<React.SetStateAction<IPost[]>>;
-  author: IAuthor[];
-  categories: ICategories[];
+  dataSearch: Post[];
+  setDataSearch: React.Dispatch<React.SetStateAction<Post[]>>;
+  authors: Author[];
+  categories: Categories[];
 }
 
 const SearchBar: React.FC<ISearch> = ({
   dataSearch,
   setDataSearch,
-  author,
+  authors,
   categories,
 }) => {
   const [searchText, setSearchText] = useState<string>("");
-  const [selectedAuthor, setSelectedAuthor] = useState<IAuthor>();
-  const [selectedCategory, setSelectedCategory] = useState<ICategories>();
-  const [sortType, setSortTye] = useState<"newest" | "oldest" | "az">("az");
+  const [selectedAuthor, setSelectedAuthor] = useState<Author>();
+  const [selectedCategory, setSelectedCategory] = useState<Categories>();
+  const [sortType, setSortType] = useState<"newest" | "oldest" | "az">("az");
   const [debouncedText, setDebouncedText] = useState<string>("");
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -92,10 +92,10 @@ const SearchBar: React.FC<ISearch> = ({
           <DialogContent className="max-h-[90vh] overflow-y-auto w-full max-w-5xl">
             <DialogHeader>
               <DialogTitle>
-                <h1 className="text-2xl font-bold">Create New Blog Post</h1>
+                <span className="text-2xl font-bold">Create New Blog Post</span>
               </DialogTitle>
             </DialogHeader>
-            <PostForm authorList={author} categoriesList={categories}/>
+            <PostForm authorList={authors} categoriesList={categories} />
           </DialogContent>
         </Dialog>
       </div>
@@ -148,7 +148,7 @@ const SearchBar: React.FC<ISearch> = ({
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All Authors</SelectItem>
-              {author.map((item) => (
+              {authors.map((item) => (
                 <SelectItem key={item.id} value={item.value}>
                   {item.name}
                 </SelectItem>
@@ -159,7 +159,7 @@ const SearchBar: React.FC<ISearch> = ({
           <Select
             defaultValue="az"
             onValueChange={(val) =>
-              setSortTye(val as "newest" | "oldest" | "az")
+              setSortType(val as "newest" | "oldest" | "az")
             }
           >
             <SelectTrigger className="lg:w-[180px] w-full">

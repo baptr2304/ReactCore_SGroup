@@ -1,18 +1,18 @@
-import PostList from "@/components/PostList/PostList";
-import SearchBar from "@/components/SearchBar/SearchBar";
-import type { IAuthor, ICategories, IPost } from "@/const/type/postType";
+import PostList from "@/posts/PostList/PostList";
+import SearchBar from "@/posts/SearchBar/SearchBar";
 import {
   fetchAuthorList,
   fetchCategoriesList,
   fetchPostList,
-} from "@/services/postService";
+} from "@/posts/shared/data/PostData";
+import type { Author, Categories, Post } from "@/posts/shared/data/PostType";
 import { useEffect, useState } from "react";
 
 const Blog = () => {
-  const [posts, setPosts] = useState<IPost[]>([]);
-  const [authorList, setAuthorList] = useState<IAuthor[]>([]);
-  const [categoriesList, setCategoriesList] = useState<ICategories[]>([]);
-  const [filteredPosts, setFilteredPosts] = useState<IPost[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [authorList, setAuthorList] = useState<Author[]>([]);
+  const [categoriesList, setCategoriesList] = useState<Categories[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +39,7 @@ const Blog = () => {
       <SearchBar
         dataSearch={posts}
         setDataSearch={setFilteredPosts}
-        author={authorList}
+        authors={authorList}
         categories={categoriesList}
       />
       <p className="text-sm text-muted-foreground mb-6">

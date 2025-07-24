@@ -1,9 +1,13 @@
-import Blog from "./Pages/Blog";
+import CustomRouter from "@/router/CustomRouter";
 
-function App() {
+function App({
+  routes,
+}: {
+  routes: { path: string; component: React.ReactElement }[];
+}) {
   return (
     <div className="min-h-screen bg-background">
-      <Blog />
+      <CustomRouter routes={routes} />
     </div>
   );
 }
