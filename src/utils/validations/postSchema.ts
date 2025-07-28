@@ -1,5 +1,3 @@
-"use client";
-
 import { z } from "zod";
 
 export const postFormSchema = z.object({
@@ -13,13 +11,9 @@ export const postFormSchema = z.object({
         .nonempty({ message: "Excerpt is required" })
         .min(20, { message: "Excerpt must be at least 20 characters" }),
 
-    author: z
-        .string()
-        .nonempty({ message: "Author is required" }),
+    author: z.string().nonempty({ message: "Author is required" }),
 
-    category: z
-        .string()
-        .nonempty({ message: "Category is required" }),
+    category: z.string().nonempty({ message: "Category is required" }),
 
     tag: z.string().optional(),
 
