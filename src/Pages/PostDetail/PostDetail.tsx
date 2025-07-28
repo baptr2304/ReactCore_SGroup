@@ -1,12 +1,5 @@
-interface PostDetailProps {
-  params?: {
-    id: string;
-  };
-}
-
-const PostDetail: React.FC<PostDetailProps> = ({ params }) => {
-  const postId = params?.id;
-
+const PostDetail = () => {
+  const postId = window.location.pathname.split("/").pop();
   return (
     <div>
       <h1>PostDetail</h1>
