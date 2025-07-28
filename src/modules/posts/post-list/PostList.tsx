@@ -1,5 +1,5 @@
-import type { Post } from "@/posts/shared/data/PostType";
-import PostCard from "./PostCard";
+import type { Post } from "@/modules/posts/shared/data/PostType.ts";
+import PostCard from "./PostCard.tsx";
 interface PostList {
   posts: Post[];
 }

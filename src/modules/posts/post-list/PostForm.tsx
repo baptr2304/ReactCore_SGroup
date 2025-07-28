@@ -1,30 +1,30 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button.tsx";
 import {
   Form,
   FormControl,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@/components/ui/form.tsx";
+import { Input } from "@/components/ui/input.tsx";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
 import {
   handlePostFormSubmit,
   postFormSchema,
-} from "@/utils/validations/postSchema";
+} from "@/utils/validations/postSchema.ts";
 
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui/badge.tsx";
 import {
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import type { Author, Categories } from "@/posts/shared/data/PostType";
-import type { PostFormValues } from "@/utils/validations/postSchema";
+} from "@/components/ui/select.tsx";
+import { Textarea } from "@/components/ui/textarea.tsx";
+import type { Author, Categories } from "@/modules/posts/shared/data/PostType.ts";
+import type { PostFormValues } from "@/utils/validations/postSchema.ts";
 import { Select } from "@radix-ui/react-select";
 import { X } from "lucide-react";
 import { useState } from "react";

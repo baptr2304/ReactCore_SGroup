@@ -1,11 +1,11 @@
-import PostList from "@/posts/PostList/PostList";
-import SearchBar from "@/posts/SearchBar/SearchBar";
+import PostList from "@/modules/posts/post-list/PostList.tsx";
+import SearchBar from "@/modules/posts/post-list/SearchBar/SearchBar.tsx";
 import {
   fetchAuthorList,
   fetchCategoriesList,
   fetchPostList,
-} from "@/posts/shared/data/PostData";
-import type { Author, Categories, Post } from "@/posts/shared/data/PostType";
+} from "@/modules/posts/shared/data/post-data.ts";
+import type { Author, Categories, Post } from "@/modules/posts/shared/data/PostType.ts";
 import { useEffect, useState } from "react";
 
 const Blog = () => {
@@ -27,7 +27,7 @@ const Blog = () => {
         setAuthorList(authors);
         setCategoriesList(categories);
       } catch (error) {
-        console.error("Error loading data:", error);
+        console.error("error loading data:", error);
       }
     };
 

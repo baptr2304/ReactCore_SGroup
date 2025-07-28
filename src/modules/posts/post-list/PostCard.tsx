@@ -1,14 +1,14 @@
-import { Link } from "@/components/Link/Link";
-import { Badge } from "@/components/ui/badge";
+import { Link } from "@/components/Link/Link.tsx";
+import { Badge } from "@/components/ui/badge.tsx";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import type { Post } from "@/posts/shared/data/PostType";
-import { formatDate } from "@/utils/postUtils";
+} from "@/components/ui/card.tsx";
+import type { Post } from "@/modules/posts/shared/data/PostType.ts";
+import { formatDate } from "@/utils/postUtils.ts";
 import { CalendarDays, User } from "lucide-react";
 interface PostProps {
   post: Post;

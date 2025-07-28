@@ -1,4 +1,4 @@
-const PostDetail = () => {
+const PostDetailPage = () => {
   const postId = window.location.pathname.split("/").pop();
   return (
     <div>
@@ -8,4 +8,4 @@ const PostDetail = () => {
   );
 };
 
-export default PostDetail;
+export default PostDetailPage;

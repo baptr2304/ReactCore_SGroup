@@ -1,13 +1,27 @@
-import CustomRouter from "@/router/CustomRouter";
+import {type RouteConfig, Router} from "@/modules/shared/router/Router.tsx";
+import Blog from "@/modules/posts/post-list/PostListPage.tsx";
+import PostDetailPage from "@/modules/posts/post-detail/PostDetailPage.tsx";
+import ErrorPage from "@/modules/error/ErrorPage.tsx";
 
-function App({
-  routes,
-}: {
-  routes: { path: string; component: React.ReactElement }[];
-}) {
+const routes: RouteConfig[] = [
+  {
+    path: "/",
+    component: <Blog />,
+  },
+  {
+    path: "/post/:id",
+    component: <PostDetailPage />,
+  },
+  {
+    path: "*",
+    component: <ErrorPage />,
+  },
+];
+
+function App() {
   return (
     <div className="min-h-screen bg-background">
-      <CustomRouter routes={routes} />
+      <Router routes={routes} notFoundPage={ErrorPage} />
     </div>
   );
 }

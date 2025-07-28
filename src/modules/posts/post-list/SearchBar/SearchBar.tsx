@@ -1,24 +1,24 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button.tsx";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
+} from "@/components/ui/dialog.tsx";
+import { Input } from "@/components/ui/input.tsx";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import type { Author, Categories, Post } from "@/posts/shared/data/PostType";
+} from "@/components/ui/select.tsx";
+import type { Author, Categories, Post } from "@/modules/posts/shared/data/PostType.ts";
 import { Plus, Search } from "lucide-react";
 import { useEffect, useState } from "react";
-import PostForm from "../PostList/PostForm";
-import { filterPosts, sortPosts } from "./PostFilter";
+import PostForm from "@/modules/posts/post-list/PostForm.tsx";
+import { filterPosts, sortPosts } from "./PostFilter.ts";
 interface ISearch {
   dataSearch: Post[];
   setDataSearch: React.Dispatch<React.SetStateAction<Post[]>>;

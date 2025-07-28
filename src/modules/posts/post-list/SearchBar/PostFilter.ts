@@ -1,4 +1,4 @@
-import type { Author, Categories, Post } from "@/posts/shared/data/PostType";
+import type { Author, Categories, Post } from "@/modules/posts/shared/data/PostType.ts";
 export const sortPosts = (
     posts: Post[],
     sortType: "newest" | "oldest" | "az" | "za"
