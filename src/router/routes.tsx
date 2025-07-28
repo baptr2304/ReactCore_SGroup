@@ -1,6 +1,6 @@
-import Blog from "@/pages/Blog";
-import ErrorPage from "@/pages/Error/ErrorPage";
-import PostDetail from "@/pages/PostDetail/PostDetail";
+import Blog from "../pages/Blog/index.tsx";
+import ErrorPage from "../pages/Error/ErrorPage";
+import PostDetail from "../pages/PostDetail/PostDetail";
 
 const routes = [
   {

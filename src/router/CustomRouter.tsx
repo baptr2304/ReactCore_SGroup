@@ -1,5 +1,5 @@
-import ErrorPage from "@/pages/Error/ErrorPage";
 import React, { useEffect, useState } from "react";
+import ErrorPage from "../pages/Error/ErrorPage";
 
 function matchRoute(path: string, currentPath: string) {
   if (!path.includes(":")) return path === currentPath;
