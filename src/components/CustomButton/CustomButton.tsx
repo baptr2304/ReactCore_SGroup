@@ -3,7 +3,6 @@ import React from "react";
 interface CustomButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
-  onClick?: () => void;
   disabled?: boolean;
   className?: string;
   icon?: React.ElementType;
@@ -24,11 +23,9 @@ const colorStyles: Record<"primary" | "secondary" | "danger", string> = {
 };
 const CustomButton: React.FC<CustomButtonProps> = ({
   label,
-  onClick,
   disabled,
   className = "",
   icon: Icon,
-
   iconPosition = "left",
   size = "medium",
   color = "primary",
@@ -41,7 +38,6 @@ const CustomButton: React.FC<CustomButtonProps> = ({
     <button
       className={`inline-flex items-center justify-center gap-1 rounded-xl font-medium shadow-sm 
         transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed ${sizeStyles[size]} ${colorStyles[color]} ${className}`}
-      onClick={onClick}
       disabled={disabled || loading}
       {...props}
     >
